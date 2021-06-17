@@ -6,13 +6,19 @@
 -- Data Model
 @VDM.viewType: #BASIC
 @Analytics.dataCategory: #DIMENSION
+-- Performance
+@ObjectModel.usageType:{
+    serviceQuality: #A,
+    sizeCategory: #S,
+    dataClass: #CUSTOMIZING
+}
 -- Drop Down
 @ObjectModel.resultSet.sizeCategory: #XS
 -- Not Drop Down
 @Search.searchable: true
 -- Foreign Key Associations
 @ObjectModel.representativeKey: 'Code'
-define view <Z1I_ViewNameVH>                                                           //Input
+define view <Z1I_ViewNameVH>                                                         //Input
   as select from dd07l
   association [0..*] to <Z1I_ViewNameVHText> as _Text on $projection.Code = _Text.Code //Input
 {
