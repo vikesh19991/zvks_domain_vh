@@ -1,8 +1,8 @@
-@AbapCatalog.sqlViewName: '<SQLVIewName>'                                            //Input
+@AbapCatalog.sqlViewName: '<SQLVIewName>'                                              //Input: <SQLVIewName>
 @AbapCatalog.compiler.compareFilter: true
 @AbapCatalog.preserveKey: true
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: '<Value Help Description>'                                       //Input
+@EndUserText.label: '<Value Help Description>'                                         //Input: <Value Help Description>
 -- Data Model
 @VDM.viewType: #BASIC
 @Analytics.dataCategory: #DIMENSION
@@ -14,18 +14,19 @@
 }
 -- Drop Down
 @ObjectModel.resultSet.sizeCategory: #XS
--- Not Drop Down
+-- Fuzzy Search
 @Search.searchable: true
 -- Foreign Key Associations
 @ObjectModel.representativeKey: 'Code'
-define view <Z1I_ViewNameVH>                                                         //Input
+define view <Z1I_ViewNameVH>                                                           //Input: <Z1I_ViewNameVH>
   as select from dd07l
-  association [0..*] to <Z1I_ViewNameVHText> as _Text on $projection.Code = _Text.Code //Input
+  association [0..*] to <Z1I_ViewNameVHText> as _Text on $projection.Code = _Text.Code //Input: <Z1I_ViewNameVHText>
 {
       @ObjectModel.text.association: '_Text'
-  key cast( domvalue_l as <DataElementName> ) as Code,
+      @Search.defaultSearchElement: true
+key cast( domvalue_l as <DataElementName> ) as Code,                                   //Input: <DataElementName>
       _Text
 }
 where
-      dd07l.domname  = '<DataElementName>'
+      dd07l.domname  = '<DomaintName>'                                                 //Input: <DomainName> 
   and dd07l.as4local = 'A'
