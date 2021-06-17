@@ -1,0 +1,25 @@
+@AbapCatalog.sqlViewName: '<SQLVIewName>'                                            //Input
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: '<Value Help Description>'                                       //Input
+-- Data Model
+@VDM.viewType: #BASIC
+@Analytics.dataCategory: #DIMENSION
+-- Drop Down
+@ObjectModel.resultSet.sizeCategory: #XS
+-- Not Drop Down
+@Search.searchable: true
+-- Foreign Key Associations
+@ObjectModel.representativeKey: 'Code'
+define view Z1I_ViewNameVH                                                           //Input
+  as select from dd07l
+  association [0..*] to Z1I_ViewNameVHText as _Text on $projection.Code = _Text.Code //Input
+{
+      @ObjectModel.text.association: '_Text'
+  key cast( domvalue_l as <DataElementName> ) as Code,
+      _Text
+}
+where
+      dd07l.domname  = '<DataElementName>'
+  and dd07l.as4local = 'A'
