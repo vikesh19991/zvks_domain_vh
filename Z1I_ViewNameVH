@@ -5,6 +5,7 @@
 @EndUserText.label: '<Value Help Description>' //Input: <Value Help Description>
 -- Data Model
 @VDM.viewType: #BASIC
+@ObjectModel.dataCategory: #VALUE_HELP
 @Analytics.dataCategory: #DIMENSION
 -- Performance
 @ObjectModel.usageType:{
