@@ -12,9 +12,9 @@
 @Search.searchable: true
 -- Foreign Key Associations
 @ObjectModel.representativeKey: 'Code'
-define view Z1I_ViewNameVH                                                           //Input
+define view <Z1I_ViewNameVH>                                                           //Input
   as select from dd07l
-  association [0..*] to Z1I_ViewNameVHText as _Text on $projection.Code = _Text.Code //Input
+  association [0..*] to <Z1I_ViewNameVHText> as _Text on $projection.Code = _Text.Code //Input
 {
       @ObjectModel.text.association: '_Text'
   key cast( domvalue_l as <DataElementName> ) as Code,
