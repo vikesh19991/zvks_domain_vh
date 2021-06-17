@@ -1,11 +1,11 @@
-@AbapCatalog.sqlViewName: '<SQLVIewName>'                                                               //Input: <SQLVIewName>
+@AbapCatalog.sqlViewName: '<SQLVIewName>' //Input: <SQLVIewName>
 @AbapCatalog.compiler.compareFilter: true
 @AbapCatalog.preserveKey: true
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: '<Value Help Description> Text'                                                     //Input: <Value Help Description>
+@EndUserText.label: '<Value Help Description> Text' //Input: <Value Help Description>
 -- Data Model
 @VDM.viewType: #BASIC
-@Analytics.dataCategory: #DIMENSION
+@ObjectModel.dataCategory: #TEXT
 -- Performance
 @ObjectModel.usageType:{
     serviceQuality: #A,
@@ -16,13 +16,13 @@
 @Search.searchable: true
 -- Foreign Key Associations
 @ObjectModel.representativeKey: 'Code'
-define view <ZI1_ViewNameVHText>                                                                       //Input: <ZI1_ViewNameVHText> 
+define view <ZI1_ViewNameVHText> //Input: <ZI1_ViewNameVHText> 
   as select from dd07t 
-  association [0..*] to <ZI1_ViewNameVH> as _Code     on $projection.Code     = _Code.Code             //Input: <ZI1_ViewNameVH>
+  association [0..*] to <ZI1_ViewNameVH> as _Code     on $projection.Code     = _Code.Code //Input: <ZI1_ViewNameVH>
   association [0..1] to I_Language       as _Language on $projection.Language = _Language.Language
 {
       @Search.defaultSearchElement: true
-  key cast( domvalue_l as <DataElementName> ) as Code,                                                 //Input: <DataElementName>
+  key cast( domvalue_l as <DataElementName> ) as Code, //Input: <DataElementName>
       @Semantics.language: true
       @ObjectModel.foreignKey.association: '_Language'
   key ddlanguage                              as Language,
@@ -33,7 +33,5 @@ define view <ZI1_ViewNameVHText>                                                
       _Language
 }
 where
-      domname  = '<DomaintName>'                                                                        //Input: <DomainName>
+      domname  = '<DomaintName>' //Input: <DomainName>
   and as4local = 'A'
-
-//ZI1_LRGIndicatorVHText
